@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from Prediction import get_prediction, LabelEncoder
 from load_model import get_model
 
-rf_model = get_model(model_path = r'RTA_severity model.pkl')
+rf_model = get_model(model_path = r'Model/RTA_severity model.pkl')
 
 
 st.set_page_config(page_title="Accident Severity Prediction App",
@@ -135,7 +135,7 @@ def main():
                             Light_conditions,Weather_conditions,Type_of_collision,Number_of_vehicles_involved,
                             Pedestrian_movement,Age_band_of_casualty
                             ]).reshape(1,-1)
-
+        print(data)
         pred = get_prediction(data=data, model=rf_model)
 
         st.write(f"The predicted severity is:  {pred[0]}")
